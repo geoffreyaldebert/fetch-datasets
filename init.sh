@@ -11,6 +11,8 @@ git clone --depth 1 $REPO_URL $CLONE_DIR
 
 python ${CLONE_DIR}/fetch.py $1
 
+mc cp --recursive ${WORK_DIR}/repo-git/$2 geoffrey/$2/
+
 # Convert .md to .ipynb
 pip install python-frontmatter jupytext
 python $CLONE_DIR/utils/md-to-ipynb.py ${COURSE_DIR}/intro.md

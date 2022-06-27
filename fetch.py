@@ -49,16 +49,3 @@ for r in resources:
     f.write('\n\n```python\nobj = s3.get_object(Bucket="geoffrey", Key="'+folder_name+'/'+r['resource_title']+'")\ndf'+str(cpt)+' = pd.read_csv(obj["Body"])\n```')
 
 f.write('\n\nA vous de jouer')
-
-session = boto3.client("s3",
-    endpoint_url = "https://minio.lab.sspcloud.fr/",
-    aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
-    aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
-    aws_session_token = os.getenv('AWS_SESSION_TOKEN')
-)
-
-s3 = session.resource('s3')
-s3.put_object(Bucket="geoffrey", Key=(folder_name+'/'))
-
-for file in glob.glob('/home/jovyan/work/repo-git/'+folder_name+'/*'):
-    s3.upload_file(file, "geoffrey", folder_name+'/'+file.split('/')[-1])

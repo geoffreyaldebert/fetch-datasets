@@ -17,7 +17,6 @@ f = open("/home/jovyan/work/repo-git/intro.md", "w")
 
 f.write('---\ntitle: "Playlist '+data['name']+'"\nabstract: "Nouvelle playlist"\n---')
 
-f.write('\n\n# Playlist '+data['name'])
 f.write('\n\nCe notebook a pour objectif de vous aider à commencer votre analyse autour de votre playlist nouvellement créée. Nous avons téléchargé pour vous vos données et nous les avons stockés dans un répertoire minio accessible depuis cet environnement jupyter')
 f.write('\n\nD\'abord les imports')
 f.write('\n\n```python\nimport os\nimport pandas as pd\nimport boto3\n```')
@@ -47,7 +46,7 @@ for r in resources:
     open('/home/jovyan/work/repo-git/'+folder_name+'/'+r['resource_title'], 'wb').write(response.content)
     f.write('\n\n### Jeu de données ['+r['dataset_title']+'](https://www.data.gouv.fr/fr/datasets/'+r['dataset_id']+')')
     f.write('\n\nResource '+r['resource_title'])
-    f.write('\n\n```python\nobj = s3.get_object(Bucket="geoffrey", Key=folder_name+"/'+r['resource_title']+'")\ndf'+str(cpt)+' = pd.read_csv(obj["Body"], sep=None)\n```')
+    f.write('\n\n```python\nobj = s3.get_object(Bucket="geoffrey", Key="'+folder_name+'"/'+r['resource_title']+'")\ndf'+str(cpt)+' = pd.read_csv(obj["Body"], sep=None)\n```')
 
 f.write('\n\nA vous de jouer')
 

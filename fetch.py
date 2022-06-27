@@ -45,5 +45,6 @@ for r in resources:
     f.write('\n\n### Jeu de données ['+r['dataset_title']+'](https://www.data.gouv.fr/fr/datasets/'+r['dataset_id']+')')
     f.write('\n\nResource '+r['resource_title'])
     f.write('\n\n```python\nobj = s3.get_object(Bucket="geoffrey", Key="'+folder_name+'/'+r['resource_title']+'")\ndf'+str(cpt)+' = pd.read_csv(obj["Body"])\n```')
+    f.write('\n\n```python\ndf'+str(cpt)+'.head()\n```')
 
 f.write('\n\nA vous de jouer')

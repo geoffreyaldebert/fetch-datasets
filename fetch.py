@@ -20,7 +20,7 @@ f.write('\n\nCe notebook a pour objectif de vous aider à commencer votre analys
 f.write('\n\nD\'abord les imports')
 f.write('\n\n```python\nimport os\nimport pandas as pd\nimport boto3\n```')
 f.write('\n\nNous nous connectons ensuite au minio pour pouvoir accéder aux données avec le protocole s3')
-f.write('\n\n```python\ns3 = boto3.client("s3",endpoint_url = "https://" + os.environ["AWS_S3_ENDPOINT"],\n    aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),\n    aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),\n    aws_session_token = os.getenv("AWS_SESSION_TOKEN"))\n```')
+f.write('\n\n```python\ns3 = boto3.client("s3",endpoint_url = "https://" + os.getenv["AWS_S3_ENDPOINT"],\n    aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),\n    aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),\n    aws_session_token = os.getenv("AWS_SESSION_TOKEN"))\n```')
 
 resources = []
 for d in data['playlist']:

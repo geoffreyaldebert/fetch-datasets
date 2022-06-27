@@ -27,10 +27,10 @@ resources = []
 for d in data['playlist']:
     for r in d['resources']:
         mydict = {}
-        mydict['resource_title'] = r['title']
-        mydict['resource_id'] = r['id']
-        mydict['dataset_id'] = d['id']
-        mydict['dataset_title'] = d['name']
+        mydict['resource_title'] = r['resource_title']
+        mydict['resource_id'] = r['resource_id']
+        mydict['dataset_id'] = d['dataset_id']
+        mydict['dataset_title'] = d['dataset_title']
         resources.append(mydict)
 
 print(resources)

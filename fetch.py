@@ -58,7 +58,6 @@ session = boto3.client("s3",
 )
 
 s3 = session.resource('s3')
-
 s3.put_object(Bucket="geoffrey", Key=(folder_name+'/'))
 
 for file in glob.glob('/home/jovyan/work/repo-git/'+folder_name+'/*'):

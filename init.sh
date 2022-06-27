@@ -28,7 +28,7 @@ REQUIREMENTS_FILE=${FORMATION_DIR}/requirements.txt
 [ -f $REQUIREMENTS_FILE ] && pip install -r $REQUIREMENTS_FILE && rm $REQUIREMENTS_FILE
 
 # Remove course Git repository
-rm -r $CLONE_DIR
+#rm -r $CLONE_DIR
 
 # Open the relevant notebook when starting Jupyter Lab
 echo "c.LabApp.default_url = '/lab/tree/playlist/intro.ipynb'" >> /home/jovyan/.jupyter/jupyter_server_config.py

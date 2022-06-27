@@ -25,9 +25,7 @@ f.write('\n\n```python\ns3 = boto3.client("s3",endpoint_url = "https://" + os.ge
 
 resources = []
 for d in data['playlist']:
-    r = requests.get('https://www.data.gouv.fr/api/1/datasets/'+d['id'])
-    res = r.json()
-    for r in res['resources']:
+    for r in d['resources']:
         mydict = {}
         mydict['resource_title'] = r['title']
         mydict['resource_id'] = r['id']

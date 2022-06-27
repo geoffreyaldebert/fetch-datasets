@@ -50,13 +50,14 @@ for r in resources:
 
 f.write('\n\nA vous de jouer')
 
-s3 = boto3.client("s3",
+session = boto3.client("s3",
     endpoint_url = "https://minio.lab.sspcloud.fr/",
     aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
     aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
     aws_session_token = os.getenv('AWS_SESSION_TOKEN')
 )
 
+s3 = session.resource('s3')
 
 s3.put_object(Bucket="geoffrey", Key=(folder_name+'/'))
 

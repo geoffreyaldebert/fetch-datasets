@@ -58,4 +58,4 @@ s3 = boto3.client("s3",
 )
 
 for file in glob.glob('/home/jovyan/work/repo-git/'+folder_name+'/*'):
-    s3.upload_file( file, "geoffrey", folder_name+"/"+file.split('/')[-1])
+    s3.upload_file(Filename=file, Bucket="geoffrey", Key=folder_name+"/"+file.split('/')[-1])

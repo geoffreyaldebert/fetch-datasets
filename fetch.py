@@ -12,7 +12,10 @@ if not isExist:
     os.makedirs('./'+folder_name)
 
 f = open("intro.md", "w")
-f.write('# Playlist '+data['name'])
+
+f.write('---\ntitle: "Playlist '+data['name']+'"\nabstract: "Nouvelle playlist"\n---')
+
+f.write('\n\n# Playlist '+data['name'])
 f.write('\n\nCe notebook a pour objectif de vous aider à commencer votre analyse autour de votre playlist nouvellement créée. Nous avons téléchargé pour vous vos données et nous les avons stockés dans un répertoire minio accessible depuis cet environnement jupyter')
 f.write('\n\nD\'abord les imports')
 f.write('\n\n```python\nimport os\nimport pandas as pd\nimport boto3\n```')

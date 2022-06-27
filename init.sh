@@ -10,7 +10,6 @@ REPO_URL=https://github.com/geoffreyaldebert/fetch-datasets.git
 git clone --depth 1 $REPO_URL $CLONE_DIR
 
 python ${CLONE_DIR}/fetch.py $1
-python ${CLONE_DIR}/to_minio.py
 
 # Convert .md to .ipynb
 pip install python-frontmatter jupytext

@@ -2,6 +2,8 @@ import requests
 import sys
 from slugify import slugify
 import os
+import glob
+import boto3
 
 r = requests.get(sys.argv[1])
 data = r.json()
@@ -48,3 +50,11 @@ for r in resources:
     f.write('\n\n```python\nobj = s3.get_object(Bucket="geoffrey", Key=folder_name+"/'+r['resource_title']+'")\ndf'+str(cpt)+' = pd.read_csv(obj["Body"], sep=None)\n```')
 
 f.write('\n\nA vous de jouer')
+
+s3 = boto3.client("s3",endpoint_url = "https://" + os.getenv["AWS_S3_ENDPOINT"],
+                  aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
+                  aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
+                  aws_session_token = os.getenv('AWS_SESSION_TOKEN'))
+
+for file in glob.glob(folder_name+'/*'):
+    s3.upload_file( file, "geoffrey", folder_name+"/"+file.split('/')[-1])
